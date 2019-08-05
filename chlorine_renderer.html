@@ -365,6 +365,7 @@
 			}
 
 			renderer.draw();
+			return renderer.turn === renderer.game.frames.length - 1 
 		};
 
 		renderer.go_to_next_event = () => {
@@ -1380,6 +1381,19 @@
 	setTimeout(() => {
 		ipcRenderer.send("renderer_ready", null);
 		unitbox.innerHTML = "No file loaded. Use file menu or drag-and-drop.";
+/*		var check_finish = () => {
+			if (renderer.forward(1)) {
+				setTimeout(() => {
+					const remote = require('electron').remote
+					let w = remote.getCurrentWindow()
+					w.close()
+				}, 1000);
+			} else {
+				setTimeout(check_finish, 100);
+			};
+		}
+		setTimeout(check_finish, 100);
+*/
 	}, 200);
 
 </script>
